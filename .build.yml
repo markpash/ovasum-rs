@@ -1,0 +1,12 @@
+image: alpine/edge
+sources:
+  - https://github.com/MarkPash/ovasum-rs.git
+packages:
+  - curl
+tasks:
+  - rust: |
+      curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable --profile minimal -y
+  - build: |
+      source $HOME/.cargo/env
+      cd ovasum-rs
+      cargo build
