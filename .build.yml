@@ -6,7 +6,11 @@ packages:
 tasks:
   - rust: |
       curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable --profile minimal -y
+  - check: |
+      source $HOME/.cargo/env
+      cd ovasum-rs
+      cargo check && cargo test
   - build: |
       source $HOME/.cargo/env
       cd ovasum-rs
-      cargo build
+      cargo build --release
